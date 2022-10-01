@@ -20,7 +20,57 @@ namespace FilterByPalindromicTask
         /// </example>
         public static int[] FilterByPalindromic(int[]? source)
         {
-            throw new NotImplementedException("You need to implement this function.");
+            bool IsPalindromicNumber(int number)
+            {
+                if (number < 0)
+                {
+                    return false;
+                }
+
+                int digitnum = (int)Math.Log10(number) + 1;
+                int zeronum = (int)Math.Pow(10, digitnum - 1);
+                return IsPalindromicNumberLocalFun();
+                bool IsPalindromicNumberLocalFun()
+                {
+                    if (number < 10 & number >= 0)
+                    {
+                        return true;
+                    }
+                    else if (number % 10 == number / zeronum)
+                    {
+                        number = number % (int)Math.Pow(10, digitnum - 1);
+                        number /= 10;
+                        digitnum -= 2;
+                        zeronum /= 100;
+                        return IsPalindromicNumberLocalFun();
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            if (source == null)
+            {
+                throw new ArgumentNullException("array is null.");
+            }
+
+            if (source.Length == 0)
+            {
+                throw new ArgumentException("array is empty.");
+            }
+
+            List<int> result = new List<int>();
+            foreach (int num in source)
+            {
+                if (IsPalindromicNumber(num))
+                {
+                    result.Add(num);
+                }
+            }
+
+            return result.ToArray();
         }
     }
 }
