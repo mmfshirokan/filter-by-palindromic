@@ -38,41 +38,6 @@ namespace FilterByPalindromicTask
         }
 
         /// <summary>
-        /// Rerurns number of digits in int number that are given.
-        /// </summary>
-        /// <returns>Number of digits.</returns>>
-        public static int GetNumberOfDigits(int a) => a switch
-        {
-            < 10 => 1,
-            < 100 => 2,
-            < 1000 => 3,
-            < 10000 => 4,
-            < 100000 => 5,
-            < 1000000 => 6,
-            < 10000000 => 7,
-            < 100000000 => 8,
-            < 1000000000 => 9,
-            _ => 10,
-        };
-
-        /// <summary>
-        /// Rerurns ten in power of digit numbers.
-        /// </summary>
-        /// <returns>Digit.</returns>>
-        public static int GetNumberOfZeroes(int a) => a switch
-        {
-            2 => 10,
-            3 => 100,
-            4 => 1000,
-            5 => 10000,
-            6 => 100000,
-            7 => 1000000,
-            8 => 10000000,
-            9 => 100000000,
-            _ => 1000000000,
-        };
-
-        /// <summary>
         /// Returns new array that contains only palindromic numbers from source array.
         /// </summary>
         /// <param name="source">Source array.</param>
@@ -106,5 +71,40 @@ namespace FilterByPalindromicTask
 
             return result.ToArray();
         }
+
+        /// <summary>
+        /// Rerurns number of digits in int number that are given.
+        /// </summary>
+        /// <returns>Number of digits.</returns>>
+        public static int GetNumberOfDigits(int a) => a switch
+        {
+            < 10 => 1,
+            < 100 => 2,
+            < 1000 => 3,
+            < 10000 => 4,
+            < 100000 => 5,
+            < 1000000 => 6,
+            < 10000000 => 7,
+            < 100000000 => 8,
+            < 1000000000 => 9,
+            _ => 10,
+        };
+
+        /// <summary>
+        /// Rerurns ten in power of digit numbers.
+        /// </summary>
+        /// <returns>Digit.</returns>>
+        public static int GetNumberOfZeroes(int a) => a switch
+        {
+            2 => 10,
+            3 => 100,
+            4 => 1000,
+            5 => 10000,
+            6 => 100000,
+            7 => 1000000,
+            8 => 10000000,
+            9 => 100000000,
+            _ => 1000000000,
+        };
     }
 }
