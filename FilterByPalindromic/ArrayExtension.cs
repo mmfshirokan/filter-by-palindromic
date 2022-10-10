@@ -8,36 +8,6 @@ namespace FilterByPalindromicTask
     public static class ArrayExtension
     {
         /// <summary>
-        /// Determines if a number is a palindromic number.
-        /// </summary>
-        /// <param name="number">Verified number.</param>
-        /// <returns>true if the verified number is palindromic number; otherwise, false.</returns>
-        public static bool IsPalindromicNumber(int number)
-        {
-            if (number < 0)
-            {
-                return false;
-            }
-
-            int digitnum = GetNumberOfDigits(number);
-            while (digitnum > 1)
-            {
-                byte lustNum = (byte)(number % 10);
-                byte firstNum = (byte)(number / GetNumberOfZeroes(digitnum));
-                if (firstNum != lustNum)
-                {
-                    return false;
-                }
-
-                number /= 10;
-                number = number % GetNumberOfZeroes(digitnum - 1);
-                digitnum -= 2;
-            }
-
-            return true;
-        }
-
-        /// <summary>
         /// Returns new array that contains only palindromic numbers from source array.
         /// </summary>
         /// <param name="source">Source array.</param>
@@ -72,11 +42,7 @@ namespace FilterByPalindromicTask
             return result.ToArray();
         }
 
-        /// <summary>
-        /// Rerurns number of digits in int number that are given.
-        /// </summary>
-        /// <returns>Number of digits.</returns>>
-        public static int GetNumberOfDigits(int a) => a switch
+        private static int GetNumberOfDigits(int a) => a switch
         {
             < 10 => 1,
             < 100 => 2,
@@ -90,11 +56,7 @@ namespace FilterByPalindromicTask
             _ => 10,
         };
 
-        /// <summary>
-        /// Rerurns ten in power of digit numbers.
-        /// </summary>
-        /// <returns>Digit.</returns>>
-        public static int GetNumberOfZeroes(int a) => a switch
+        private static int GetNumberOfZeroes(int a) => a switch
         {
             2 => 10,
             3 => 100,
@@ -106,5 +68,30 @@ namespace FilterByPalindromicTask
             9 => 100000000,
             _ => 1000000000,
         };
+
+        private static bool IsPalindromicNumber(int number)
+        {
+            if (number < 0)
+            {
+                return false;
+            }
+
+            int digitnum = GetNumberOfDigits(number);
+            while (digitnum > 1)
+            {
+                byte lustNum = (byte)(number % 10);
+                byte firstNum = (byte)(number / GetNumberOfZeroes(digitnum));
+                if (firstNum != lustNum)
+                {
+                    return false;
+                }
+
+                number /= 10;
+                number = number % GetNumberOfZeroes(digitnum - 1);
+                digitnum -= 2;
+            }
+
+            return true;
+        }
     }
 }
